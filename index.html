@@ -8,23 +8,43 @@
 
         <style>
             * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+                color: white;
+            }
+
+            ::-webkit-scrollbar {
+                background: black;
+                border: white 2px solid;
+                border-radius: 0px 40px 40px 0px;
+                border-right: transparent;
+                width: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                border: white 2px solid;
             }
 
             body {
                 height: 100vh;
                 display: flex;
                 justify-content: center;
+                background-image: url(assets/bg.png);
+                background-size: cover;
+                background-position: fixed;
             }
+
+            
+
             .wrapper {
-                width: 100%;
+                width: 90%;
                 max-width: 600px;
                 margin: auto;
-                background-color: blue;
+                background-color: black;
                 padding: 10px;
                 border-radius: 10px;
+                border: 2px white solid;
             }
 
             /*Elements*/
@@ -36,9 +56,32 @@
                 justify-content: center;
             }
 
-            .test {
-                height: 100%;
+            .logo {
+                position: relative;
+                width: 100%;
+                z-index: 2;
             }
+
+            .nav-button {
+                margin: -15px;
+                width: 40%;
+                max-width: 100px;
+                transition: 0.1s ease-out;
+            }
+
+            .nav-button:hover {
+                scale: 1.2;
+            }
+            
+
+            .nav-buttons {
+                position: absolute;
+                z-index: 1;
+                top: -30px;
+                justify-content: center;
+                display: flex;
+            }
+
             .container {
                     background-color: black;
                     height: 100%;
@@ -50,13 +93,14 @@
                     height: 250px;
                 }
             
+            /* HOME */
             .announcement {
                 border-radius: 10px;
                 border: 2px white solid;
                 height: 60%;
                 width: 98%;
                 padding: 10px;
-                margin: 10px auto;
+                margin: 5px auto;
                 color: white;
             }
 
@@ -66,12 +110,19 @@
                 flex-direction: column;
             }
 
+            .home-announcements-label {
+                width: 80%; margin: 0 10%;
+            }
+
             .profile {
                 display: flex;
                 justify-content:flex-end;
                 flex-direction: column;
                 align-items: center;
-                height: width * 40;
+                max-width: 200px;
+                margin: auto;
+                overflow: hidden;
+                position: relative;
             }
 
             .profile-dialogue {
@@ -82,15 +133,48 @@
                 border: 2px white solid;
                 color: white;
                 padding: 10px;
+                z-index: 3;
+                background-color: black;
+            }
+
+            .home-art {
+                position: absolute;
+                width: 280px;
+                top: -90px;
+                
+            }
+            /*FOOTER*/
+            .footer-socials-sign {
+                width: 270px;
+                position: absolute;
+                left: -30px;
+                top: -10px;
+            }
+
+            .footer-socials {
+                margin-left: 20px;
+                margin-top: 30px;
+            }
+            .footer-social-icon {
+                width: 30px;
+                margin: -7px -3px;
+            }
+
+            .footer-art {
+                position: absolute;
+                width: 200px;
+                right: -5px;
+                top: -35px;
             }
 
             /* RESPONSIVE */
             [class*="col-"] {
-                padding: 15px;
+                padding: 6px;
                 float: left;
                 width: 100%;
-                background-color: purple;
                 height: auto;
+                
+                position: relative;
             }
 
             /*Desktop*/
@@ -108,12 +192,24 @@
                 .col-11 {width: 91.66%;}
                 .col-12 {width: 100%;}
 
-                .header-nav {
-                    justify-content: right;
-                }
+                
 
                 .logo {
-                    justify-content: left;
+                    position: absolute;
+                    width: 300px;
+                    z-index: 2;
+                    top: -40px;
+                    left: -50px;
+                }
+
+                .nav-button {
+                    margin: -20px;
+                    width: 120px;
+                    max-width: 120px;
+                }
+
+                .home-announcements-label {
+                    width: 80%; margin: -13px 10%;
                 }
             }
 
@@ -132,12 +228,22 @@
                 .col-11 {width: 91.66%;}
                 .col-12 {width: 100%;}
 
-                .header-nav {
-                    justify-content: right;
+                .logo {
+                    position: absolute;
+                    width: 300px;
+                    z-index: 2;
+                    top: -40px;
+                    left: -50px;
                 }
 
-                .logo {
-                    justify-content: left;
+                .nav-button {
+                    margin: -20px;
+                    width: 120px;
+                    max-width: 120px;
+                }
+
+                .home-announcements-label {
+                    width: 80%; margin: -13px 10%;
                 }
             }
         </style>
@@ -145,32 +251,54 @@
 
         <div class="wrapper">
             <div class="row">
-                <div class="col-1 header logo">
-                    LOGO
+                <div class="col-4 header">
+                    <img src="assets/logo.PNG" class="logo">
                 </div>
-                <div class="col-11 header header-nav">
-                    NAV
-                    NAV
-                    NAV
+                <div class="col-8 header header-nav">
+                    <div class="nav-buttons">
+                        <img src="assets/home_button.PNG" class="nav-button">
+                        <img src="assets/about_button.PNG" class="nav-button">
+                        <img src="assets/shop_button.PNG." class="nav-button">
+                        <img src="assets/stuff_button.PNG" class="nav-button">
+                    </div>
+
                 </div>
             </div>
             
+            <!--HOME-->
             <div class="row">
-                <div class="col-4">
+                <div class="col-4" style="padding-top: 49px;">
                     <div class="container profile">
+                        <img src="assets/home/art.PNG" class="home-art">
                         <div class="profile-dialogue">
                             hey hey, welcome to my website.
                         </div>
     
                     </div>
                 </div>
-                <div class="col-8" style="background-color: red;">
-                    <p style="text-align: center;">announcement</p>
+                <div class="col-8">
+                        <img src="assets/home/announcements.PNG" class="home-announcements-label">
                     <div class="container">
                         <div class="announcement"> blah blah blah. </div>
                         <div class="announcement"> blah blah blah. </div>
                         <div class="announcement"> blah blah blah. </div>
                     </div>
+                </div>
+            </div>
+
+            <!--FOOTER-->
+            <div class="row">
+                <div class="col-6">
+                    <img src="assets/footer/socials.PNG" class="footer-socials-sign">
+                    <div class="footer-socials">
+                        <img src="assets/footer/email.PNG" class="footer-social-icon"> Shelvtor@gmail.com
+                        <a href=""><img src="assets/footer/twitter.PNG" class="footer-social-icon"></a>
+                        <a href=""><img src="assets/footer/tumblr.PNG" class="footer-social-icon"></a>
+                        <a href=""><img src="assets/footer/bluesky.PNG" class="footer-social-icon"></a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="assets/footer/footer_icon_home.PNG" class="footer-art">
                 </div>
             </div>
         </div>
